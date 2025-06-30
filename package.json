@@ -4,7 +4,7 @@
   "description": "This project was made in completion to the Project: Members Only of The Odin Project",
   "main": "app.js",
   "scripts": {
-    "database": "node db/populatedb.js",
+    "schema": "node db/populatedb.js",
     "server": "node --watch app.js"
   },
   "repository": {

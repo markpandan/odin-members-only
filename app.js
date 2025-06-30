@@ -21,6 +21,9 @@ app.use("/", homeRoute);
 const loginRoute = require("./routes/LoginRoute");
 app.use("/login", loginRoute);
 
+const postPageRoute = require("./routes/PostPageRoute");
+app.use("/post", postPageRoute);
+
 const signupRoute = require("./routes/SignupRoute");
 app.use("/signup", signupRoute);
 

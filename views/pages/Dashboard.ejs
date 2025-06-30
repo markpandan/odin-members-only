@@ -1,1 +1,26 @@
-<h1>This is the Dashboard Page</h1>
+<div class="container">
+    <h1 class="container-header">Dashboard</h1>
+    <div class="dashboard-container">
+        <div class="stats">
+            <div class="post-count">
+                <p>Your Total Posts</p>
+                <p class="stat-number">10</p>
+            </div>
+            <div class="membership-status">
+                <p>Status</p>
+                <p class="stat-number">Not A Member</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <form action="/dashboard" method="post">
+            <h1>Create A New Post</h1>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="Think of a phrase that summarize your post">
+            <label for="content">Content</label>
+            <textarea name="content" id="content" rows="10" placeholder="Your content goes here"></textarea>
+            <button type="submit">Send Post</button>
+        </form>
+    </div>
+</div>
