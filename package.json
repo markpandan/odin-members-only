@@ -1,0 +1,30 @@
+{
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "description": "This project was made in completion to the Project: Members Only of The Odin Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node db/populatedb.js",
+    "server": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markpandan/odin-members-only.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markpandan/odin-members-only/issues"
+  },
+  "homepage": "https://github.com/markpandan/odin-members-only#readme",
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.16.3"
+  }
+}
