@@ -25,7 +25,7 @@ textarea {
   font-family: var(--default-font-family);
 }
 
-p {
+.post-page-content {
   white-space: pre-wrap;
 }
 

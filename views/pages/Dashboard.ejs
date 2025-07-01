@@ -23,7 +23,6 @@
                 <p>Status</p>
                 <%
                     let status = [];
-                    const hasValidPermissions = userDetails.is_admin && userDetails.is_member;
                     if (userDetails.is_admin || userDetails.is_member) {
                         if (userDetails.is_admin) status.push("Admin");
                         if (userDetails.is_member) status.push("Member");
@@ -34,7 +33,9 @@
                     }
                 %>
                 <p class="stat-number"><%= status %></p>
-                <% if (!hasValidPermissions) { %> 
+                <% 
+                const hasValidPermissions = userDetails.is_admin && userDetails.is_member;
+                if (!hasValidPermissions) { %> 
                     <button onclick="showDashboardDialog()" class="dashboard-button">Become A Member Now!</button>    
                 <% } %>
             </div>

@@ -1,10 +1,23 @@
 <div class="container post-page-container">
-    <h1>Post Title</h1>
-    <p class="post-page-date">142d ago</p>
+    <h1><%= postDetail.title %></h1>
+    <p class="post-page-date"><%= postDetail.posting_date %>d ago</p>
     <hr>
-    <p class="post-page-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, in necessitatibus. Quidem culpa voluptatibus iure cum commodi, amet expedita ad numquam provident nisi rem saepe blanditiis quia distinctio perspiciatis similique.
-        
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident cum fugiat similique iste ex ullam veniam quibusdam mollitia! Ut vero tempora incidunt totam rerum repudiandae laboriosam sint ea at ipsa.
-    </p>
-    <p class="post-page-detail ">Created By: <span class="post-page-user">User-Member</span></p>
+    <p class="post-page-content"><%= postDetail.description %></p>
+    <% if (currentUser) { %>
+        <% if (currentUser.is_member) { %> 
+        <p class="post-page-detail ">Created By: 
+            <span class="post-page-user">
+            <%= postDetail.username %>
+            <%= postDetail.id == currentUser.id ? "(You)" : "" %>
+            </span>
+        </p>
+        <% } else { %>
+            <p class="post-page-detail">Answer the <a href="/dashboard">secret code</a> to see the user</p>
+        <% } %>    
+
+    <% } else { %>
+        <p class="post-page-detail ">
+            <a href="/signup">Sign in</a> and answer the secret code to see the user 
+        </p>
+    <% } %>
 </div>

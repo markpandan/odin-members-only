@@ -31,6 +31,17 @@ async function getAllPosts() {
   return rows;
 }
 
+async function getPostDetailsById(postId) {
+  const { rows } = await pool.query(
+    `SELECT users.id, users.username, posts.title, posts.description, 
+    EXTRACT(DAY FROM NOW() - posts.posting_date) AS posting_date
+    FROM posts INNER JOIN users ON posts.user_id = users.id 
+    WHERE posts.id = $1`,
+    [postId]
+  );
+  return rows[0];
+}
+
 async function insertNewUser(username, email, password) {
   const hashedPassword = await util.encryptPassword(password);
   await pool.query(
@@ -64,6 +75,7 @@ module.exports = {
   getUserByUsername,
   getFullUserDetails,
   getAllPosts,
+  getPostDetailsById,
   insertNewUser,
   insertNewPost,
   verifyMembership,

@@ -9,20 +9,25 @@
   <body>
     <%- include('components/navbar') %>
 
-    <!-- TODO: Transform this "if" statement "into" switch statement -->
-    <% if (page == 'admin') { %>
-      <%- include('pages/Admin') %>
-    <% } else if (page == 'dashboard') { %>
-      <%- include('pages/Dashboard', { userDetails }) %>
-    <% } else if (page == 'home') { %>
-      <%- include('pages/Home', { posts }) %>
-    <% } else if (page == 'login') { %>
-      <%- include('pages/Login') %>
-    <% } else if (page == 'post') { %>
-      <%- include('pages/PostPage') %>
-    <% } else if (page == 'signup') { %>
-      <%- include('pages/Signup') %>
-    <% } %>  
-
+    <% switch (page) { 
+        case 'admin': %> 
+        <%- include('pages/Admin') %>
+        <% break; 
+        case 'dashboard': %>
+        <%- include('pages/Dashboard', { userDetails }) %>
+        <% break; 
+        case 'home': %>
+        <%- include('pages/Home', { posts }) %>
+        <% break; 
+        case 'login': %>
+        <%- include('pages/Login') %>
+        <% break; 
+        case 'post': %>
+        <%- include('pages/PostPage', { postDetail }) %>
+        <% break; 
+        case 'signup': %>
+        <%- include('pages/Signup') %>
+        <% break;
+      } %>
   </body>
 </html>
