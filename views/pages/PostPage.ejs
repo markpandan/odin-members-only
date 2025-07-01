@@ -1,6 +1,24 @@
+<dialog class="post-page-dialog">
+    <form action="/post/delete" method="post">
+        <p>Are you sure that you would like to proceed deleting this post?</p>
+        <input type="hidden" name="postId" value="<%= postDetail.post_id %>">
+        <div class="button-group">        
+            <button type="submit">Yes</button>
+            <button class="cancel-button">No</button>
+        </div>
+    </form>
+</dialog>
+
 <div class="container post-page-container">
-    <h1><%= postDetail.title %></h1>
-    <p class="post-page-date"><%= postDetail.posting_date %>d ago</p>
+    <div class="post-page-header">
+        <div>
+            <h1><%= postDetail.title %></h1>
+            <p class="post-page-date"><%= postDetail.posting_date %>d ago</p>
+        </div>
+        <div>
+            <button onclick="showDashboardDialog()">Delete</button>
+        </div>
+    </div>
     <hr>
     <p class="post-page-content"><%= postDetail.description %></p>
     <% if (currentUser) { %>
@@ -21,3 +39,21 @@
         </p>
     <% } %>
 </div>
+
+<script>
+    const dashboardDialog = document.querySelector(".post-page-dialog")
+    const cancelButton = document.querySelector(".cancel-button");
+
+    function showDashboardDialog() {
+        dashboardDialog.showModal();
+    }
+
+    function closeDashboardDialog() {
+        dashboardDialog.close();
+    }
+
+    cancelButton.addEventListener("click", (e) => {
+       e.preventDefault();
+       closeDashboardDialog();
+    })
+</script>

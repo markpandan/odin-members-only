@@ -255,3 +255,8 @@ hr {
 .post-page-user {
   color: var(--primary-color);
 }
+
+.post-page-header {
+  display: flex;
+  justify-content: space-between;
+}

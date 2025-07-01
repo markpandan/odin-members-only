@@ -16,9 +16,9 @@ async function getUserByUsername(username) {
 
 async function getFullUserDetails(userId) {
   const { rows } = await pool.query(
-    `SELECT users.username, users.is_admin, users.is_member, COUNT(*) AS posts_count  
+    `SELECT users.username, users.is_admin, users.is_member, COUNT(posts.id) AS posts_count  
     FROM users 
-    INNER JOIN posts ON users.id = posts.user_id 
+    LEFT JOIN posts ON users.id = posts.user_id 
     WHERE users.id = $1
     GROUP BY users.id`,
     [userId]
@@ -33,7 +33,7 @@ async function getAllPosts() {
 
 async function getPostDetailsById(postId) {
   const { rows } = await pool.query(
-    `SELECT users.id, users.username, posts.title, posts.description, 
+    `SELECT users.id, posts.id AS post_id, users.username, posts.title, posts.description, 
     EXTRACT(DAY FROM NOW() - posts.posting_date) AS posting_date
     FROM posts INNER JOIN users ON posts.user_id = users.id 
     WHERE posts.id = $1`,
@@ -70,6 +70,10 @@ async function verifyMembership(userId, code) {
   }
 }
 
+async function deletePostById(postId) {
+  await pool.query("DELETE FROM posts WHERE id = $1", [postId]);
+}
+
 module.exports = {
   getUserById,
   getUserByUsername,
@@ -79,4 +83,5 @@ module.exports = {
   insertNewUser,
   insertNewPost,
   verifyMembership,
+  deletePostById,
 };
