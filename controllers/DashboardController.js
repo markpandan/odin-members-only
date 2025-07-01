@@ -1,7 +1,8 @@
 const db = require("../db/queries");
 
-function dashboardGet(req, res) {
-  res.render("index", { page: "dashboard" });
+async function dashboardGet(req, res) {
+  const userDetails = await db.getFullUserDetails(req.user.id);
+  res.render("index", { page: "dashboard", userDetails });
 }
 
 async function dashboardPost(req, res) {
@@ -13,7 +14,17 @@ async function dashboardPost(req, res) {
   }
 }
 
+async function dashboardSecretCodePost(req, res) {
+  try {
+    await db.verifyMembership(req.user.id, req.body.code);
+    res.redirect("/dashboard");
+  } catch (err) {
+    return next(err);
+  }
+}
+
 module.exports = {
   dashboardGet,
   dashboardPost,
+  dashboardSecretCodePost,
 };

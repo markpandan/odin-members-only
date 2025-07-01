@@ -13,7 +13,7 @@
     <% if (page == 'admin') { %>
       <%- include('pages/Admin') %>
     <% } else if (page == 'dashboard') { %>
-      <%- include('pages/Dashboard') %>
+      <%- include('pages/Dashboard', { userDetails }) %>
     <% } else if (page == 'home') { %>
       <%- include('pages/Home', { posts }) %>
     <% } else if (page == 'login') { %>
