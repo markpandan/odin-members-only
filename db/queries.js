@@ -14,6 +14,13 @@ async function getUserByUsername(username) {
   return rows[0];
 }
 
+async function getUserByEmail(email) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [
+    email,
+  ]);
+  return rows[0];
+}
+
 async function getFullUserDetails(userId) {
   const { rows } = await pool.query(
     `SELECT users.username, users.is_admin, users.is_member, COUNT(posts.id) AS posts_count  
@@ -77,6 +84,7 @@ async function deletePostById(postId) {
 module.exports = {
   getUserById,
   getUserByUsername,
+  getUserByEmail,
   getFullUserDetails,
   getAllPosts,
   getPostDetailsById,

@@ -260,3 +260,10 @@ hr {
   display: flex;
   justify-content: space-between;
 }
+
+.error-container {
+  background-color: grey;
+  color: white;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-radius: 16px;
+}
