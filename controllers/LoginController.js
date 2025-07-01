@@ -1,8 +1,13 @@
+const passport = require("passport");
+
 function loginGet(req, res) {
   res.render("index", { page: "login" });
 }
 
-function loginPost(req, res) {}
+const loginPost = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/",
+});
 
 module.exports = {
   loginGet,

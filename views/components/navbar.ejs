@@ -1,7 +1,12 @@
 <nav>
     <a href="/" class="nav-header">EchoBoard</a>
     <div class="nav-items">
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
+        <% if ( currentUser ) { %>
+            <a href="/dashboard"><%= currentUser.username %> </a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Log In</a>
+            <a href="/signup">Sign Up</a>
+        <% } %>
     </div>
 </nav>
