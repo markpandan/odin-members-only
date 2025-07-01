@@ -2,7 +2,7 @@
     <a href="/" class="nav-header">EchoBoard</a>
     <div class="nav-items">
         <% if ( currentUser ) { %>
-            <a href="/dashboard"><%= currentUser.username %> </a>
+            <a href="/dashboard" class="nav-username"><%= currentUser.username %> </a>
             <a href="/logout">Logout</a>
         <% } else { %>
             <a href="/login">Log In</a>

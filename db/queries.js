@@ -13,6 +13,10 @@ async function getUserByUsername(username) {
   return rows[0];
 }
 
+// async function getFullUserDetails() {
+
+// }
+
 async function insertNewUser(username, email, password) {
   const hashedPassword = await util.encryptPassword(password);
   await pool.query(
@@ -21,8 +25,16 @@ async function insertNewUser(username, email, password) {
   );
 }
 
+async function insertNewPost(userId, title, description) {
+  await pool.query(
+    "INSERT INTO posts (user_id, title, description) VALUES ($1, $2, $3)",
+    [userId, title, description]
+  );
+}
+
 module.exports = {
   getUserById,
   getUserByUsername,
   insertNewUser,
+  insertNewPost,
 };

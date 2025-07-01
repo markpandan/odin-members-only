@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS posts (
     user_id INT,
     title VARCHAR ( 255 ) NOT NULL,
-    description TEXT,
+    description TEXT NOT NULL,
     posting_date DATE NOT NULL DEFAULT CURRENT_DATE,
 
     CONSTRAINT fk_user
