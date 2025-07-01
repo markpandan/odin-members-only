@@ -16,7 +16,7 @@ async function getUserByUsername(username) {
 
 async function getFullUserDetails(userId) {
   const { rows } = await pool.query(
-    `SELECT users.username, users.isAdmin, users.isMember, COUNT(*) AS posts_count  
+    `SELECT users.username, users.is_admin, users.is_member, COUNT(*) AS posts_count  
     FROM users 
     INNER JOIN posts ON users.id = posts.user_id 
     WHERE users.id = $1

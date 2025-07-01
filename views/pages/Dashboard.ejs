@@ -23,10 +23,10 @@
                 <p>Status</p>
                 <%
                     let status = [];
-                    const hasValidPermissions = userDetails.isadmin && userDetails.ismember;
-                    if (userDetails.isadmin || userDetails.ismember) {
-                        if (userDetails.isadmin) status.push("Admin");
-                        if (userDetails.ismember) status.push("Member");
+                    const hasValidPermissions = userDetails.is_admin && userDetails.is_member;
+                    if (userDetails.is_admin || userDetails.is_member) {
+                        if (userDetails.is_admin) status.push("Admin");
+                        if (userDetails.is_member) status.push("Member");
                         status = status.join(" | ");
                     }
                     else {
