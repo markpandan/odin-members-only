@@ -261,6 +261,11 @@ hr {
   justify-content: space-between;
 }
 
+.post-page-link,
+.post-page-link a {
+  color: var(--primary-color);
+}
+
 .error-container {
   background-color: grey;
   color: white;
