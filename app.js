@@ -66,7 +66,7 @@ app.get("/logout", (req, res, next) => {
   });
 });
 
-const PORT = 8080;
+const PORT = 8081;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}!`);
   console.log(`Link is http://localhost:${PORT}/`);
