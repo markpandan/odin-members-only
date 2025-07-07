@@ -15,9 +15,13 @@
             <h1><%= postDetail.title %></h1>
             <p class="post-page-date"><%= postDetail.posting_date %>d ago</p>
         </div>
-        <div>
-            <button onclick="showDashboardDialog()">Delete</button>
-        </div>
+        <% if (currentUser) { 
+            if (currentUser.is_admin ) { %>
+            <div>
+                <button onclick="showDashboardDialog()">Delete</button>
+            </div>
+            <% }
+        } %>
     </div>
     <hr>
     <p class="post-page-content"><%= postDetail.description %></p>
